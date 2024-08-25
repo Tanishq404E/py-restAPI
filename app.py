@@ -7,7 +7,6 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 @app.route('/testing', methods=['POST'])
-
 def process_data():
     try:
         data = request.json.get("data", [])
@@ -16,7 +15,6 @@ def process_data():
         lowercase_alphabets = [char for char in alphabets if char.islower()]
         highest_lowercase = max(lowercase_alphabets) if lowercase_alphabets else None
 
-        # Replace with your actual full name and DOB
         user_id = "john_doe_17091999"
         email = "john@xyz.com"
         roll_number = "ABCD123"
@@ -45,10 +43,6 @@ def serve_react_app(path):
         return send_from_directory(app.static_folder, path)
     else:
         return send_from_directory(app.static_folder, 'index.html')
-    
-@app.route('/testing', methods=['GET'])
-def get_operation_code():
-    return jsonify({"operation_code": 1}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
